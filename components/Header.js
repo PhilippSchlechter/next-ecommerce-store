@@ -2,20 +2,32 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 
 const navStyles = css`
-  background-color: #ddd;
-  border-radius: 6px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 5px;
   margin: 20px 10px;
-  padding: 10px;
+  padding: 25px;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
   > a + a {
-    margin-left: 13px;
+    margin-left: 20px;
   }
 `;
-
+/* header component exported to layout */
 export default function Header() {
   return (
     <header>
       <nav css={navStyles}>
         <Link href="/">Home</Link>
+        <Link href="/products/product1"> Tower</Link>
+        <Link href="/products/product2"> Sea</Link>
+        <Link href="/products/product3"> Dragon</Link>
+        <Link href="/products/product4"> Spaceship</Link>
+        <Link href="/cartpage">🛒Cart</Link>
       </nav>
     </header>
   );

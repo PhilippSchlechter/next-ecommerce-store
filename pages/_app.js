@@ -1,8 +1,11 @@
 import { css, Global } from '@emotion/react';
+import Header from '../components/Header';
+import Layout from '../components/Layout';
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
+      {/* globalstyle for all pages */}
       <Global
         styles={css`
           *,
@@ -15,10 +18,14 @@ function MyApp({ Component, pageProps }) {
               Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
               sans-serif;
             margin: 0;
+            background-color: #f5f3eb;
           }
         `}
       />
-      <Component {...pageProps} />
+      {/* layout component wraped around */}
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }
