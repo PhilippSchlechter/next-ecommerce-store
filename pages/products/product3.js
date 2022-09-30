@@ -16,8 +16,10 @@ export default function Product3() {
       </Head>
       <h1>Kandinsky AI Dragon </h1>
       <div css={productImageStyles}>
-        <Image src="/Kandinsky-dragon2.png" alt="" width="700" height="550" />
+        <Image src="/Kandinsky-dragon2.png" alt="" width="600" height="450" />
       </div>
+      <div>Prize: 111-,</div>
+      <button>Add To Cart</button>
     </>
   );
 }

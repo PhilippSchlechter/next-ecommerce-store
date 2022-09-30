@@ -3,8 +3,10 @@ import Image from 'next/image';
 import css from 'styled-jsx/css';
 
 const productImageStyles = css`
-  display: flex;
+  display: grid;
   justify-content: center;
+  margin: 0 auto;
+  width: 100%;
 `;
 
 export default function Product1() {
@@ -16,8 +18,10 @@ export default function Product1() {
       </Head>
       <h1>Kandinsky AI Tower </h1>
       <div css={productImageStyles}>
-        <Image src="/Kandinsky-tower3.png" alt="" width="600" height="600" />
+        <Image src="/Kandinsky-tower3.png" alt="" width="500" height="500" />
       </div>
+      <div>Prize: 111-,</div>
+      <button>Add To Cart</button>
     </>
   );
 }

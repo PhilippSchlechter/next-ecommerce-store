@@ -7,7 +7,7 @@ export default function Cartpage() {
         <title>Cart Kandinsky AI</title>
         <meta name="description" content="Cart Page" />
       </Head>
-      Cartpage
+      Cartpage in progress
     </>
   );
 }

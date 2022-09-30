@@ -16,8 +16,10 @@ export default function Product2() {
       </Head>
       <h1>Kandinsky AI Sea </h1>
       <div css={productImageStyles}>
-        <Image src="/Kandinsky-sea2.png" alt="" width="700" height="550" />
+        <Image src="/Kandinsky-sea2.png" alt="" width="600" height="450" />
       </div>
+      <div>Prize: 111-,</div>
+      <button>Add To Cart</button>
     </>
   );
 }

@@ -19,10 +19,12 @@ export default function Product4() {
         <Image
           src="/Kandinsky-spaceship2.png"
           alt=""
-          width="700"
-          height="550"
+          width="600"
+          height="450"
         />
       </div>
+      <div>Prize: 111-,</div>
+      <button>Add To Cart</button>
     </>
   );
 }
