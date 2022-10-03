@@ -26,36 +26,26 @@ export default function Home() {
         <title>Kandinsky AI Art</title>
         <meta name="description" content="Overview Product page" />
       </Head>
-      <h1 css={h1Styles}>Kandinsky AI Art Posters</h1>
+      <h1 css={h1Styles}>AI Art Posters à la Kandinsky</h1>
       <div css={imageContainerStyles}>
         <div css={imageStyles}>
           <Link href="/products/product1">
-            <Image src="/Kandinsky-18.jpg" alt="" width="270" height="270" />
+            <Image src="/1-tower.jpg" alt="" width="270" height="270" />
           </Link>
         </div>
         <div css={imageStyles}>
           <Link href="/products/product2">
-            <Image src="/Kandinsky-sea.jpg" alt="" width="270" height="270" />
+            <Image src="/2-sea.jpg" alt="" width="270" height="270" />
           </Link>
         </div>
         <div css={imageStyles}>
           <Link href="/products/product3">
-            <Image
-              src="/Kandinsky-dragon.jpg"
-              alt=""
-              width="270"
-              height="270"
-            />
+            <Image src="/3-dragon.jpg" alt="" width="270" height="270" />
           </Link>
         </div>
         <div css={imageStyles}>
           <Link href="/products/product4">
-            <Image
-              src="/Kandinsky-spaceship.jpg"
-              alt=""
-              width="270"
-              height="270"
-            />
+            <Image src="/4-spaceship.jpg" alt="" width="270" height="270" />
           </Link>
         </div>
       </div>

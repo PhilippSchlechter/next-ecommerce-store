@@ -23,10 +23,7 @@ export default function Header() {
     <header>
       <nav css={navStyles}>
         <Link href="/">Home</Link>
-        <Link href="/products/product1"> Tower</Link>
-        <Link href="/products/product2"> Sea</Link>
-        <Link href="/products/product3"> Dragon</Link>
-        <Link href="/products/product4"> Spaceship</Link>
+        <Link href="/products"> Products</Link>
         <Link href="/cartpage">🛒Cart</Link>
       </nav>
     </header>
