@@ -2,7 +2,10 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { products } from '../../database/products';
+import { getProducts } from '../../database/connect';
+
+// this was the first way trying to get the data
+// import { products } from '../../database/products';
 
 const productStyles = css`
   border-radius: 5px;
@@ -47,8 +50,10 @@ export default function Products(props) {
     </>
   );
 }
-
-export function getServerSideProps() {
+// change to async function and get the data from the database and not the file
+export async function getServerSideProps() {
+  const products = await getProducts();
+  console.log('get products', getProducts);
   return {
     props: {
       products: products,

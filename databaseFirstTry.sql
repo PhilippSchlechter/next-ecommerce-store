@@ -3,7 +3,7 @@ CREATE TABLE products(
   name varchar(30) NOT NULL,
   type varchar(30) NOT NULL,
   size varchar(30) NOT NULL,
-  prize integer NOT NULL,
+  prize integer NOT NULL
 );
 
 INSERT INTO products
