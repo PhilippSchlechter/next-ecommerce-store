@@ -26,6 +26,7 @@ function MyApp({ Component, pageProps }) {
           }
         `}
       />
+
       {/* layout component wraped around */}
       <Layout>
         <Component {...pageProps} />
