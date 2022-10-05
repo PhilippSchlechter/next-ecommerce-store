@@ -1,7 +1,10 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { products } from '../../database/products';
+import { getProductById } from '../../database/connect';
+
+// this was the first way trying to get the data
+// import { products } from '../../database/products';
 
 const productStyles = css`
   border-radius: 5px;
@@ -41,12 +44,18 @@ export default function Product(props) {
     </>
   );
 }
-export function getServerSideProps(context) {
+export async function getServerSideProps(context) {
   const productId = parseInt(context.query.productId);
+
+  /*
+  this was the first way trying to get the data:
 
   const foundProduct = products.find((product) => {
     return product.id === productId;
-  });
+  }); */
+
+  const foundProduct = await getProductById(productId);
+
   return {
     props: {
       product: foundProduct,

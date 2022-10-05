@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import css from 'styled-jsx/css';
 
+/* this was the first attempt creating different pages, will be deleted at the end of the project */
+
 const productImageStyles = css`
   display: flex;
   justify-content: center;
