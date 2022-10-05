@@ -20,6 +20,10 @@ function MyApp({ Component, pageProps }) {
             margin: 0;
             background-color: #f5f3eb;
           }
+          a {
+            text-decoration: none;
+            color: black;
+          }
         `}
       />
       {/* layout component wraped around */}
