@@ -38,8 +38,11 @@ export default function Product(props) {
         />
 
         <div>Size: {props.product.size}</div>
-        <div>Prize: {props.product.prize},- (without frame) </div>
-        <button>Add To Cart</button>
+        <div data-test-id="product-price">
+          Prize:
+          {props.product.prize},- (without frame)
+        </div>
+        <button data-test-id="product-add-to-cart">Add To Cart</button>
       </div>
     </>
   );

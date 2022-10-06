@@ -28,7 +28,11 @@ export default function Products(props) {
 
       {props.products.map((product) => {
         return (
-          <div key={`product-${product.id}`} css={productStyles}>
+          <div
+            data-test-id={`product-${product.id}`}
+            key={`product-${product.id}`}
+            css={productStyles}
+          >
             <h2>
               <Link href={`/products/${product.id}`}>{product.name}</Link>
             </h2>
