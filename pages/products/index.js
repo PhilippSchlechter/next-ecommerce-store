@@ -47,7 +47,7 @@ export default function Products(props) {
               </a>
             </Link>
             <div>Size: {product.size}</div>
-            <div>Prize: {product.prize}</div>
+            <div>Price: {product.prize}</div>
           </div>
         );
       })}

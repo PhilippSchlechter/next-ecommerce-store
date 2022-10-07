@@ -7,17 +7,18 @@ const imageContainerStyles = css`
   display: grid;
   grid-template-columns: 270px 270px;
   grid-template-rows: 270px 270px;
-  grid-gap: 13px;
+  grid-gap: 20px;
   justify-content: center;
 `;
 const imageStyles = css`
-  border: 4px solid #2f3330;
+  border: 2px solid #2f3330;
   border-radius: 2px;
 `;
 const h1Styles = css`
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 60px;
 `;
 export default function Home() {
   return (
@@ -26,7 +27,9 @@ export default function Home() {
         <title>Kandinsky AI Art</title>
         <meta name="description" content="Overview Product page" />
       </Head>
-      <h1 css={h1Styles}>AI Art Posters à la Kandinsky</h1>
+      <h1 css={h1Styles}>
+        Kandinsky <br /> AI Art Posters
+      </h1>
       <div css={imageContainerStyles}>
         <div css={imageStyles}>
           <Link href="/products/product1">
