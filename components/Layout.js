@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import Head from 'next/head';
 import CookieBanner from './CookieBanner';
 import Footer from './Footer';
 import Header from './Header';
@@ -11,6 +12,9 @@ export default function Layout(props) {
   return (
     <>
       <CookieBanner />
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       {/* header component for all pages */}
       <Header />
       {/* main styles for all pages */}

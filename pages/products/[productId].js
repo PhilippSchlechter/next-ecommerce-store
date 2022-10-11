@@ -2,9 +2,13 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
-import Cart from '../../components/Cart';
 import { getProductById } from '../../database/connect';
 import { positiveCartValues } from '../../utils/cart';
+import {
+  getParsedCookie,
+  setStringifiedCookie,
+  stringifyCookieValue,
+} from '../../utils/cookie';
 
 // this was the first way trying to get the data
 // import { products } from '../../database/products';
@@ -58,10 +62,64 @@ export default function Product(props) {
             Price: {props.product.prize},- (frame not included)
           </div>
         </div>
-        <button onClick={() => setCart(cart - 1)}>➖</button>
         <button onClick={() => setCart(cart + 1)}>➕</button>{' '}
         <span>{positiveCartValues(cart)}</span>{' '}
+        <button onClick={() => setCart(cart - 1)}>➖</button>
         <button data-test-id="product-add-to-cart">Add To Cart ✔️</button>
+        <br />
+        <button
+          onClick={() => {
+            const currentCookieValue = getParsedCookie('amount');
+            if (!currentCookieValue) {
+              setStringifiedCookie('amount', [
+                { id: props.product.id, amount: -1 },
+              ]);
+              return;
+            }
+
+            const foundCookie = currentCookieValue.find(
+              (cookieProduct) => cookieProduct.id === props.product.id,
+            );
+
+            if (!foundCookie) {
+              currentCookieValue.push({ id: props.product.id, amount: -1 });
+            } else {
+              foundCookie.amount--;
+            }
+            setStringifiedCookie('amount', currentCookieValue);
+          }}
+        >
+          -
+        </button>
+        <button
+          onClick={() => {
+            const currentCookieValue = getParsedCookie('amount');
+            // initialize first click with: amount 1
+            if (!currentCookieValue) {
+              setStringifiedCookie('amount', [
+                { id: props.product.id, amount: 1 },
+              ]);
+              return;
+            }
+            const foundCookie = currentCookieValue.find(
+              (cookieProduct) => cookieProduct.id === props.product.id,
+            );
+            if (!foundCookie) {
+              currentCookieValue.push({ id: props.product.id, amount: 1 });
+            } else {
+              foundCookie.amount++;
+            }
+            setStringifiedCookie('amount', currentCookieValue);
+          }}
+        >
+          +
+        </button>
+        <div>
+          {/* Error: Text content does not match server-rendered HTML. use other method? but how with the database */}
+          {getParsedCookie('amount')?.find(
+            (cookieProduct) => cookieProduct.id === props.product.id,
+          )?.amount || 0}
+        </div>
       </div>
     </>
   );
