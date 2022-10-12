@@ -12,8 +12,8 @@ export async function getProducts() {
   return products;
 }
 export async function getProductById(id) {
-  const products = await sql`
+  const [product] = await sql`
   SELECT * FROM products WHERE id = ${id}
   `;
-  return products[0];
+  return product;
 }

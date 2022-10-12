@@ -4,10 +4,10 @@ export default function ThankYouPage() {
   return (
     <>
       <Head>
-        <title>Thank You Dear Customer</title>
+        <title>Thank yoou for your order</title>
         <meta name="description" content="Thank You Page" />
       </Head>
-      Thank You Dear Customer
+      <h1>Thank You Dear Customer</h1>
     </>
   );
 }
