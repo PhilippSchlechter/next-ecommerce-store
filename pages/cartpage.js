@@ -154,6 +154,8 @@ export default function Cartpage(props) {
             </div> */}
             </div>
           );
+        } else {
+          return null;
         }
       })}
       <br />
