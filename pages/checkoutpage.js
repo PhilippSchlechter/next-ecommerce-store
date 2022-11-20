@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Component, useState } from 'react';
+import { useState } from 'react';
 import { getProducts } from '../database/connect';
 import { totalSum } from './cartpage';
 

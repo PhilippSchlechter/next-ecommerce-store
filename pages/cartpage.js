@@ -1,10 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 import { getProducts } from '../database/connect';
-import { positiveCartValues } from '../utils/cart';
-import { getParsedCookie, setStringifiedCookie } from '../utils/cookie';
 
 export function totalSum(props) {
   const cartSum = props.products.map((productSum) => {
