@@ -3,11 +3,11 @@ CREATE TABLE products(
   name varchar(30) NOT NULL,
   type varchar(30) NOT NULL,
   size varchar(30) NOT NULL,
-  prize integer NOT NULL
+  price integer NOT NULL
 );
 
 INSERT INTO products
-(name, type, size, prize)
+(name, type, size, price)
 VALUES
   ('Tower','Poster','50 x 50', 111),
   ('Sea', 'Poster', '50 x 50', 111),

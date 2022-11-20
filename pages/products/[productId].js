@@ -6,9 +6,6 @@ import { getProductById, getProducts } from '../../database/connect';
 import { positiveCartValues } from '../../utils/cart';
 import { getParsedCookie, setStringifiedCookie } from '../../utils/cookie';
 
-// this was the first way trying to get the data
-// import { products } from '../../database/products';
-
 const productStyles = css`
   border-radius: 5px;
   border: 1px solid black;
@@ -30,7 +27,7 @@ const productInformationStyles = css`
 `;
 
 export default function Product(props) {
-  const [cart, setCart] = useState(1);
+  const [cartAmount, setCartAmount] = useState(1);
 
   return (
     <>
@@ -56,58 +53,20 @@ export default function Product(props) {
           <div>Size: {props.product.size}</div>
           <div>Type: {props.product.type}</div>
           <div data-test-id="product-price">
-            Price: {props.product.prize},- (frame not included)
+            Price: {props.product.price},- (frame not included)
           </div>
         </div>
-        {/*  old version of buttons
-        <button onClick={() => setCart(cart - 1)}>➖</button>
-        <button onClick={() => setCart(cart + 1)}>➕</button> */}{' '}
         <button
           onClick={() => {
-            // initialize first click with: amount 1
-            /* const currentCookieValue = getParsedCookie('amount');
-            if (!currentCookieValue) {
-              setStringifiedCookie('amount', [
-                { id: props.product.id, amount: 1 },
-              ]);
-              return;
-            }
-            const foundCookie = currentCookieValue.find(
-              (cookieProduct) => cookieProduct.id === props.product.id,
-            );
-            if (!foundCookie) {
-              currentCookieValue.push({ id: props.product.id, amount: 1 });
-            } else {
-              foundCookie.amount++;
-            }
-            setStringifiedCookie('amount', currentCookieValue); */
-            setCart(cart + 1);
+            setCartAmount(cartAmount + 1);
           }}
         >
           ➕
         </button>{' '}
-        <span>{positiveCartValues(cart)}</span>{' '}
+        <span>{positiveCartValues(cartAmount)}</span>{' '}
         <button
           onClick={() => {
-            /* const currentCookieValue = getParsedCookie('amount');
-            if (!currentCookieValue) {
-              setStringifiedCookie('amount', [
-                { id: props.product.id, amount: -1 },
-              ]);
-              return;
-            }
-
-            const foundCookie = currentCookieValue.find(
-              (cookieProduct) => cookieProduct.id === props.product.id,
-            );
-
-            if (!foundCookie) {
-              currentCookieValue.push({ id: props.product.id, amount: -1 });
-            } else {
-              foundCookie.amount--;
-            }
-            setStringifiedCookie('amount', currentCookieValue); */
-            setCart(cart - 1);
+            setCartAmount(cartAmount - 1);
           }}
         >
           ➖
@@ -115,35 +74,43 @@ export default function Product(props) {
         <button
           data-test-id="product-add-to-cart"
           onClick={() => {
-            const currentCookieValue = getParsedCookie('amount');
+            if (!props.cart) {
+              return props.setCart([
+                {
+                  id: props.product.id,
+                  cart: cartAmount,
+                },
+              ]);
+            }
+            const currentCookieValue = getParsedCookie('cart');
             if (!currentCookieValue) {
-              setStringifiedCookie('amount', [
-                { id: props.product.id, amount: cart },
+              setStringifiedCookie('cart', [
+                { id: props.product.id, cart: cartAmount },
               ]);
               return;
             }
 
-            const foundCookie = currentCookieValue.find(
+            const foundCookie = props.cart.find(
               (cookieProduct) => cookieProduct.id === props.product.id,
             );
 
             if (!foundCookie) {
-              currentCookieValue.push({ id: props.product.id, amount: cart });
+              props.cart.push({
+                id: props.product.id,
+                cart: cartAmount,
+              });
+              setStringifiedCookie('cart', props.cart);
             } else {
-              foundCookie.amount = foundCookie.amount + cart;
+              foundCookie.cart = foundCookie.cart + cartAmount;
             }
+            const newQuantity = [...props.cart];
 
-            setStringifiedCookie('amount', currentCookieValue);
+            props.setCart(newQuantity);
+            setStringifiedCookie('cart', currentCookieValue);
           }}
         >
           Add To Cart ✔️
         </button>
-        <div>
-          {/* Error: Text content does not match server-rendered HTML. use other method? but how with the database */}
-          {/* {getParsedCookie('amount')?.find(
-            (cookieProduct) => cookieProduct.id === props.product.id,
-          )?.amount || 0} */}
-        </div>
       </div>
     </>
   );
@@ -152,25 +119,18 @@ export default function Product(props) {
 export async function getServerSideProps(context) {
   const productId = parseInt(context.query.productId);
 
-  /*
-  this was the first way trying to get the data:
-
-  const foundProduct = products.find((product) => {
-    return product.id === productId;
-  }); */
-
   const foundProduct = await getProductById(productId);
 
-  const parsedCookies = context.req.cookies.amount
-    ? JSON.parse(context.req.cookies.amount)
+  const parsedCookies = context.req.cookies.cart
+    ? JSON.parse(context.req.cookies.cart)
     : [];
   const products = (await getProducts()).map((product) => {
     return {
       ...product,
-      amount:
+      cart:
         parsedCookies.find(
           (cookieProductObject) => product.id === cookieProductObject.id,
-        )?.amount || 0 /* null or 0 ? */,
+        )?.cart || null,
     };
   });
 

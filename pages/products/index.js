@@ -4,13 +4,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getProducts } from '../../database/connect';
 
-// this was the first way trying to get the data
-// import { products } from '../../database/products';
-
 const productStyles = css`
   border-radius: 5px;
   border: 1px solid #ccc;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   & + & {
     margin-top: 30px;
@@ -47,7 +48,7 @@ export default function Products(props) {
               </a>
             </Link>
             <div>Size: {product.size}</div>
-            <div>Price: {product.prize}</div>
+            <div>Price: {product.price}</div>
           </div>
         );
       })}

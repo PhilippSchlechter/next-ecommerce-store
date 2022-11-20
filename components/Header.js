@@ -19,24 +19,23 @@ const navStyles = css`
 `;
 
 /* header component exported to layout */
-export default function Header() {
-  /* const [cart, setCart] = useState(); */
-
+export default function Header(props) {
+  const cartAmount = () => {
+    return props.cart?.reduce((item0, item) => item0 + item.cart, 0);
+  };
   return (
     <header>
       <nav css={navStyles}>
         <Link href="/">Home</Link>
         <Link href="/products"> Products</Link>
-        <Link href="/cartpage">🛒Cart </Link>
-
-        {/*  {props.cart?.map((singleAmount) => {
-          console.log('single', singleAmount.amount);
-          return (
-            <div key={`product-${singleAmount}`}>
-              <div>{singleAmount.amount}</div>
-            </div>
-          );
-        })} */}
+        <Link href="/cartpage">
+          <a data-test-id="cart-link">
+            🛒Cart{' '}
+            <span data-test-id="cart-count">
+              {props.cart ? cartAmount() : 0}
+            </span>
+          </a>
+        </Link>
       </nav>
     </header>
   );

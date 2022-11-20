@@ -12,11 +12,9 @@ export default function Layout(props) {
   return (
     <>
       <CookieBanner />
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Head />
       {/* header component for all pages */}
-      <Header />
+      <Header cart={props.cart} />
       {/* main styles for all pages */}
       <main css={mainStyles}>{props.children}</main>
       {/* footer component for all pages */}

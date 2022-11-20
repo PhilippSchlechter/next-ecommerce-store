@@ -7,19 +7,18 @@ function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState();
 
   useEffect(() => {
-    const parsedCookie = getParsedCookie('amount');
-    if (parsedCookie) {
-      setCart(parsedCookie);
+    const parsedCookie = getParsedCookie('cart');
+    if (!parsedCookie) {
+      return;
     }
+    setCart(parsedCookie);
   }, []);
 
   useEffect(() => {
     if (typeof cart !== 'undefined') {
-      setStringifiedCookie('amount', cart);
+      setStringifiedCookie('cart', cart);
     }
   }, [cart]);
-
-  console.log('Appcart', cart);
 
   return (
     <>
@@ -46,7 +45,8 @@ function MyApp({ Component, pageProps }) {
       />
 
       {/* layout component wraped around */}
-      <Layout>
+      <Layout cart={cart}>
+        {/* passing down props */}
         <Component {...pageProps} cart={cart} setCart={setCart} />
       </Layout>
     </>
