@@ -1571,10 +1571,10 @@
     "@typescript-eslint/types" "5.40.0"
     eslint-visitor-keys "^3.3.0"
 
-"@upleveled/eslint-config-upleveled@^3.3.9":
-  version "3.3.9"
-  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-3.3.9.tgz#ea2e40fd0863846a02c9672640eadcfb96de0557"
-  integrity sha512-otisSxKrtGLJZgfZaUF8H0vR7ESRQtNv6JFuH8iOe7xWVPAoyh0KnsTDCJwcD0vHXXZbqtAUpZzy+OPybiQzjw==
+"@upleveled/eslint-config-upleveled@^3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-3.4.2.tgz#d6ad21d74f71852f60011aee0981dda8ee120f53"
+  integrity sha512-3q4AajitOJmBGvzTkHB1F3cfmPrOgS1Jh8proMYMJlsTj/15sGRFH1XjbkjB38RsdO0ZMfu1IJbt8DWirrF0MA==
 
 "@upleveled/eslint-plugin-upleveled@2.1.6":
   version "2.1.6"
@@ -1871,11 +1871,6 @@ clean-regexp@^1.0.0:
   integrity sha512-GfisEZEJvzKrmGWkvfhgzcz/BllN1USeqD2V6tg14OAOgaCD2Z/PUEuxnAZ/nPvmaHRG7a8y77p1T/IRQ4D1Hw==
   dependencies:
     escape-string-regexp "^1.0.5"
-
-client-only@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/client-only/-/client-only-0.0.1.tgz#38bba5d403c41ab150bff64a95c85013cf73bca1"
-  integrity sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==
 
 color-convert@^1.9.0:
   version "1.9.3"
@@ -4084,13 +4079,6 @@ styled-jsx@5.0.7:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-5.0.7.tgz#be44afc53771b983769ac654d355ca8d019dff48"
   integrity sha512-b3sUzamS086YLRuvnaDigdAewz1/EFYlHpYBP5mZovKEdQQOIIYq8lApylub3HHZ6xFjV051kkGU7cudJmrXEA==
-
-styled-jsx@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-5.1.0.tgz#4a5622ab9714bd3fcfaeec292aa555871f057563"
-  integrity sha512-/iHaRJt9U7T+5tp6TRelLnqBqiaIT0HsO0+vgyj8hK2KUk7aejFqRrumqPUlAqDwAj8IbS/1hk3IhBAAK/FCUQ==
-  dependencies:
-    client-only "0.0.1"
 
 stylis@4.0.13:
   version "4.0.13"
