@@ -1,7 +1,9 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import { Component, useState } from 'react';
+import { getProducts } from '../database/connect';
+import { totalSum } from './cartpage';
 
-export default function CheckoutPage() {
+export default function CheckoutPage(props) {
   const [firstNameInput, setFirstNameInput] = useState('');
   const [lastNameInput, setLastNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
@@ -13,6 +15,11 @@ export default function CheckoutPage() {
   const [expirationDateInput, setExpirationDateInput] = useState('');
   const [securityCodeInput, setSecurityCodeInput] = useState('');
 
+  const initialValue = 0;
+  const totalSumArray = totalSum(props).reduce(
+    (previousValue, currentValue) => previousValue + currentValue,
+    initialValue,
+  );
   return (
     <>
       <Head>
@@ -20,6 +27,13 @@ export default function CheckoutPage() {
         <meta name="description" content="Checkout Page" />
       </Head>
       <h1>Checkout</h1>
+      <h2>Total:</h2>
+      <br />
+      {totalSumArray}€
+      <br />
+      <br />
+      <br />
+      <br />
       <div>
         <form method="POST" action="/thankyoupage">
           <label>
@@ -147,4 +161,24 @@ export default function CheckoutPage() {
       </div>
     </>
   );
+}
+export async function getServerSideProps(context) {
+  const parsedCookies = context.req.cookies.amount
+    ? JSON.parse(context.req.cookies.amount)
+    : [];
+  const cartProducts = (await getProducts()).map((product) => {
+    return {
+      ...product,
+      amount:
+        parsedCookies.find(
+          (cookieProductObject) => product.id === cookieProductObject.id,
+        )?.amount || 0,
+    };
+  });
+
+  return {
+    props: {
+      products: cartProducts,
+    },
+  };
 }

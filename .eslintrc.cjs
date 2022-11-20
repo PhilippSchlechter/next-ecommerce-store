@@ -1,6 +1,6 @@
 module.exports = {
   extends: ['@upleveled/upleveled'],
-  // plugins: ['@ts-safeql/eslint-plugin'],
+  /* // plugins: ['@ts-safeql/eslint-plugin'],
   // rules: {
   //   '@ts-safeql/check-sql': [
   //     'error',
@@ -15,5 +15,5 @@ module.exports = {
   //       ],
   //     },
   //   ],
-  // },
+  // }, */
 };

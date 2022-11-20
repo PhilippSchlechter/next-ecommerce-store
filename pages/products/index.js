@@ -57,7 +57,6 @@ export default function Products(props) {
 // change to async function and get the data from the database and not the file
 export async function getServerSideProps() {
   const products = await getProducts();
-  console.log('get products', getProducts);
   return {
     props: {
       products: products,

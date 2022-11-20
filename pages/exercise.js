@@ -2,6 +2,7 @@
 
 function CartCounter({ cart, setCart }) {
   return (
+
     <div className="jh-cart">
       <div>
         {cart}

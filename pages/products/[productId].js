@@ -30,7 +30,8 @@ const productInformationStyles = css`
 `;
 
 export default function Product(props) {
-  const [cart, setCart] = useState(0);
+  const [cart, setCart] = useState(1);
+
   return (
     <>
       {}
@@ -63,8 +64,8 @@ export default function Product(props) {
         <button onClick={() => setCart(cart + 1)}>➕</button> */}{' '}
         <button
           onClick={() => {
-            const currentCookieValue = getParsedCookie('amount');
             // initialize first click with: amount 1
+            /* const currentCookieValue = getParsedCookie('amount');
             if (!currentCookieValue) {
               setStringifiedCookie('amount', [
                 { id: props.product.id, amount: 1 },
@@ -79,7 +80,7 @@ export default function Product(props) {
             } else {
               foundCookie.amount++;
             }
-            setStringifiedCookie('amount', currentCookieValue);
+            setStringifiedCookie('amount', currentCookieValue); */
             setCart(cart + 1);
           }}
         >
@@ -88,7 +89,7 @@ export default function Product(props) {
         <span>{positiveCartValues(cart)}</span>{' '}
         <button
           onClick={() => {
-            const currentCookieValue = getParsedCookie('amount');
+            /* const currentCookieValue = getParsedCookie('amount');
             if (!currentCookieValue) {
               setStringifiedCookie('amount', [
                 { id: props.product.id, amount: -1 },
@@ -105,13 +106,38 @@ export default function Product(props) {
             } else {
               foundCookie.amount--;
             }
-            setStringifiedCookie('amount', currentCookieValue);
+            setStringifiedCookie('amount', currentCookieValue); */
             setCart(cart - 1);
           }}
         >
           ➖
         </button>
-        <button data-test-id="product-add-to-cart">Add To Cart ✔️</button>
+        <button
+          data-test-id="product-add-to-cart"
+          onClick={() => {
+            const currentCookieValue = getParsedCookie('amount');
+            if (!currentCookieValue) {
+              setStringifiedCookie('amount', [
+                { id: props.product.id, amount: cart },
+              ]);
+              return;
+            }
+
+            const foundCookie = currentCookieValue.find(
+              (cookieProduct) => cookieProduct.id === props.product.id,
+            );
+
+            if (!foundCookie) {
+              currentCookieValue.push({ id: props.product.id, amount: cart });
+            } else {
+              foundCookie.amount = foundCookie.amount + cart;
+            }
+
+            setStringifiedCookie('amount', currentCookieValue);
+          }}
+        >
+          Add To Cart ✔️
+        </button>
         <div>
           {/* Error: Text content does not match server-rendered HTML. use other method? but how with the database */}
           {/* {getParsedCookie('amount')?.find(
@@ -122,6 +148,7 @@ export default function Product(props) {
     </>
   );
 }
+
 export async function getServerSideProps(context) {
   const productId = parseInt(context.query.productId);
 
@@ -143,7 +170,7 @@ export async function getServerSideProps(context) {
       amount:
         parsedCookies.find(
           (cookieProductObject) => product.id === cookieProductObject.id,
-        )?.amount || null /* null or 0 ? */,
+        )?.amount || 0 /* null or 0 ? */,
     };
   });
 

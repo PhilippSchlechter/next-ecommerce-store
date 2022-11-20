@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import { useState } from 'react';
-import Cart from './Cart';
 
 const navStyles = css`
   display: flex;
@@ -19,15 +18,26 @@ const navStyles = css`
     margin-left: 20px;
   }
 `;
+
 /* header component exported to layout */
 export default function Header() {
-  const [cart, setCart] = useState(0);
+  /* const [cart, setCart] = useState(); */
+
   return (
     <header>
       <nav css={navStyles}>
         <Link href="/">Home</Link>
         <Link href="/products"> Products</Link>
         <Link href="/cartpage">🛒Cart </Link>
+
+        {/*  {props.cart?.map((singleAmount) => {
+          console.log('single', singleAmount.amount);
+          return (
+            <div key={`product-${singleAmount}`}>
+              <div>{singleAmount.amount}</div>
+            </div>
+          );
+        })} */}
       </nav>
     </header>
   );

@@ -1,7 +1,26 @@
 import { css, Global } from '@emotion/react';
+import { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
+import { getParsedCookie, setStringifiedCookie } from '../utils/cookie';
 
 function MyApp({ Component, pageProps }) {
+  const [cart, setCart] = useState();
+
+  useEffect(() => {
+    const parsedCookie = getParsedCookie('amount');
+    if (parsedCookie) {
+      setCart(parsedCookie);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof cart !== 'undefined') {
+      setStringifiedCookie('amount', cart);
+    }
+  }, [cart]);
+
+  console.log('Appcart', cart);
+
   return (
     <>
       {/* globalstyle for all pages */}
@@ -28,7 +47,7 @@ function MyApp({ Component, pageProps }) {
 
       {/* layout component wraped around */}
       <Layout>
-        <Component {...pageProps} />
+        <Component {...pageProps} cart={cart} setCart={setCart} />
       </Layout>
     </>
   );
