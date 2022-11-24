@@ -35,18 +35,22 @@ export default function Products(props) {
             css={productStyles}
           >
             <h2>
-              <Link href={`/products/${product.id}`}>{product.name}</Link>
+              <Link href={`/products/${product.id}`}>
+                <div>{product.name}</div>
+              </Link>
             </h2>
-            <Link href={`/products/${product.id}`}>
+
+            <div>
               <a>
                 <Image
                   src={`/${product.id}-${product.name}.jpg`}
-                  alt=""
+                  alt="AI generated poster products"
                   width="200"
                   height="200"
                 />
               </a>
-            </Link>
+            </div>
+
             <div>Size: {product.size}</div>
             <div>Price: {product.price}</div>
           </div>

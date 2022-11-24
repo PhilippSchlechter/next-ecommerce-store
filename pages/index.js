@@ -33,22 +33,42 @@ export default function Home() {
       <div css={imageContainerStyles}>
         <div css={imageStyles}>
           <Link href="/products/product1">
-            <Image src="/1-tower.jpg" alt="" width="270" height="270" />
+            <Image
+              src="/1-tower.jpg"
+              alt="AI generated poster of a tower"
+              width="270"
+              height="270"
+            />
           </Link>
         </div>
         <div css={imageStyles}>
           <Link href="/products/product2">
-            <Image src="/2-sea.jpg" alt="" width="270" height="270" />
+            <Image
+              src="/2-sea.jpg"
+              alt="AI generated poster of the sea"
+              width="270"
+              height="270"
+            />
           </Link>
         </div>
         <div css={imageStyles}>
           <Link href="/products/product3">
-            <Image src="/3-dragon.jpg" alt="" width="270" height="270" />
+            <Image
+              src="/3-dragon.jpg"
+              alt="AI generated poster of a dragon"
+              width="270"
+              height="270"
+            />
           </Link>
         </div>
         <div css={imageStyles}>
           <Link href="/products/product4">
-            <Image src="/4-spaceship.jpg" alt="" width="270" height="270" />
+            <Image
+              src="/4-spaceship.jpg"
+              alt="AI generated poster of a spaceship"
+              width="270"
+              height="270"
+            />
           </Link>
         </div>
       </div>

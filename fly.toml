@@ -1,12 +1,12 @@
-app = "next-ecommerce-store"
+app = "aiartstore"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
 # Apps without volume: Comment out the [mounts] configuration below
-[mounts]
- // source = "postgres"
- // destination = "/postgres-volume"
+# [mounts]
+# source = "postgres"
+# destination = "/postgres-volume"
 
 [env]
   PORT = "8080"

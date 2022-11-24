@@ -40,11 +40,13 @@ export default function Product(props) {
             content={`${props.product.name} is a ${props.product.type}`}
           />
         </Head>
-        <h2 css={h2Styles}>AI {props.product.name}</h2>
+        <h2 css={h2Styles}>
+          <div>AI {props.product.name}</div>
+        </h2>
         <div css={imageContainerStyles}>
           <Image
             src={`/${props.product.id}-${props.product.name}2.png`}
-            alt=""
+            alt="AI generated posters in Kandinsky style"
             width="500"
             height="400"
           />
