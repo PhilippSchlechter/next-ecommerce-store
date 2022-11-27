@@ -41,14 +41,12 @@ export default function Products(props) {
             </h2>
 
             <div>
-              <a>
-                <Image
-                  src={`/${product.id}-${product.name}.jpg`}
-                  alt="AI generated poster products"
-                  width="200"
-                  height="200"
-                />
-              </a>
+              <Image
+                src={`/${product.id}-${product.name}.jpg`}
+                alt="AI generated poster products"
+                width="200"
+                height="200"
+              />
             </div>
 
             <div>Size: {product.size}</div>

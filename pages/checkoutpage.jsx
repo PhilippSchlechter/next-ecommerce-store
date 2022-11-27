@@ -43,6 +43,7 @@ export default function CheckoutPage(props) {
     (previousValue, currentValue) => previousValue + currentValue,
     initialValue,
   );
+  console.log(props);
   return (
     <>
       <Head>

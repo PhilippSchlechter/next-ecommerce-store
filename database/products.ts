@@ -1,6 +1,14 @@
 import { sql } from './connect';
 
-export async function getProductById(id) {
+export type Products = {
+  id: number;
+  name: string;
+  type: string;
+  size: string;
+  price: number;
+};
+
+export async function getProductById(id: number) {
   const [product] = await sql`
     SELECT
       *
